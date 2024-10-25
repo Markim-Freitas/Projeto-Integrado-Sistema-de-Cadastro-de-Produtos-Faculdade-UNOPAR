@@ -104,3 +104,11 @@ table tr:nth-child(even) {
 .success {
     background-color: #48bb78;
 }
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+}
+
+
