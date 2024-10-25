@@ -14,7 +14,7 @@ class Produto:
         self.preco = preco
         self.localizacao = localizacao  # Dicionário de localização
         self.movimentacoes = []  # Lista para rastrear movimentações
-        self.validade = validade  # Adiciona a data de validade do produto (opcional)
+        self.validade = validade  # Adiciona a data de validade do produto (Coloquei Como opcional)
         
     def atualizar_estoque(self, quantidade, tipo_movimentacao):
         """Atualiza o estoque do produto e registra a movimentação."""
