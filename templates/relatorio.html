@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Estoque</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Relatório de Estoque</h1>
+
+    <h2>Produtos com Estoque Baixo</h2>
+    {% if produtos_baixo_estoque %}
+        <ul>
+            {% for produto in produtos_baixo_estoque %}
+                <li>{{ produto.nome }} - Quantidade: {{ produto.quantidade }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum produto com estoque baixo.</p>
+    {% endif %}
+
+    <h2>Produtos com Excesso de Estoque</h2>
+    {% if produtos_excesso_estoque %}
+        <ul>
+            {% for produto in produtos_excesso_estoque %}
+                <li>{{ produto.nome }} - Quantidade: {{ produto.quantidade }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum produto com excesso de estoque.</p>
+    {% endif %}
+
+    <a href="/">Voltar</a>
+</body>
+</html>

@@ -27,14 +27,28 @@
         <label for="preco">Preço:</label>
         <input type="text" id="preco" name="preco" required><br>
 
-        <label for="localizacao">Localização no Depósito:</label>
-        <input type="text" id="localizacao" name="localizacao" required><br>
+        <label for="setor">Setor:</label>
+        <input type="text" id="setor" name="setor" value="A" required><br>
 
-        <label for="validade">Data de Validade (Opcional):</label>
-        <input type="date" id="validade" name="validade"><br>
+        <label for="corredor">Corredor:</label>
+        <input type="text" id="corredor" name="corredor" value="3" required><br>
+
+        <label for="prateleira">Prateleira:</label>
+        <input type="text" id="prateleira" name="prateleira" value="5" required><br>
 
         <button type="submit">Cadastrar Produto</button>
     </form>
+
+    <h2>Atualizar Preço de Produto</h2>
+<form action="/atualizar_preco" method="POST">
+    <label for="codigo_barras">Código de Barras:</label>
+    <input type="text" id="codigo_barras" name="codigo_barras" required>
+
+    <label for="novo_preco">Novo Preço:</label>
+    <input type="text" id="novo_preco" name="novo_preco" required>
+
+    <button type="submit">Atualizar Preço</button>
+</form>
 
     <h2>Atualizar Estoque</h2>
     <!-- Formulário para atualizar o estoque (receber novos itens) -->
@@ -78,37 +92,6 @@
         <button type="submit">Atualizar Localização</button>
     </form>
 
-    <h1>Relatório de Estoque</h1>
-
-    <h2>Produtos com Estoque Baixo</h2>
-    <ul>
-        {% for produto in produtos_baixo_estoque %}
-            <li>{{ produto.nome }} - Quantidade: {{ produto.quantidade }} - Localização: Setor {{ produto.localizacao.setor }}, Corredor {{ produto.localizacao.corredor }}, Prateleira {{ produto.localizacao.prateleira }}</li>
-        {% else %}
-            <li>Nenhum produto com estoque baixo</li>
-        {% endfor %}
-    </ul>
-
-    <h2>Produtos com Excesso de Estoque</h2>
-    <ul>
-        {% for produto in produtos_excesso_estoque %}
-            <li>{{ produto.nome }} - Quantidade: {{ produto.quantidade }}</li>
-        {% else %}
-            <li>Nenhum produto com excesso de estoque</li>
-        {% endfor %}
-    </ul>
-
-    <h2>Produtos com Validade Próxima</h2>
-    <ul>
-        {% for produto in produtos_validade_proxima %}
-            <li>{{ produto.nome }} - Validade: {{ produto.validade }}</li>
-        {% else %}
-            <li>Nenhum produto com validade próxima</li>
-        {% endfor %}
-    </ul>
-
-    <button onclick="window.history.back()">Voltar</button>
-
     <h2>Lista de Produtos</h2>
     <<ul>
         {% for produto in produtos %}
@@ -120,10 +103,15 @@
                 Prateleira
                 {{ produto.localizacao.prateleira }}</p>
             <p>Código de Barras: {{ produto.codigo_barras }}</p>
-            <p>Validade: {% if produto.validade %} {{ produto.validade }} {% else %} Não se aplica {% endif %}</p>
         </li>
         {% endfor %}
         </ul>
+
+        <a href="/gerar_relatorio"><h1>Gerar Relatório de Estoque</h1></a>
+
+        <button onclick="window.history.back()">Voltar</button>
+
+
 </body>
 
 </html>
